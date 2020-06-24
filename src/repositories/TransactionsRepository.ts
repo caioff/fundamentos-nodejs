@@ -11,7 +11,6 @@ interface CreateTransactionDTO {
   title: string;
   value: number;
   type: 'income' | 'outcome';
-  balance: Balance;
 }
 
 class TransactionsRepository {
@@ -47,7 +46,7 @@ class TransactionsRepository {
     title,
     value,
     type,
-  }: Omit<CreateTransactionDTO, 'id' | 'balance'>): Transaction {
+  }: Omit<CreateTransactionDTO, 'id'>): Transaction {
     const transaction = new Transaction({ title, value, type });
 
     this.transactions.push(transaction);
